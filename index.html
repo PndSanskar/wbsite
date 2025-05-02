@@ -1,154 +1,330 @@
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        background: radial-gradient(circle at center, #1e1e1e, #121212);
-        color: #ffffff;
-        line-height: 1.6;
-    }
-
-    header {
-        background-color: #1e1e1e;
-        padding: 2rem;
-        text-align: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    }
-
-    header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    header p {
-        font-size: 1.2rem;
-        color: #bbbbbb;
-        font-style: italic;
-    }
-
-    nav {
-        background-color: #252525;
-        padding: 1rem;
-        text-align: center;
-    }
-
-    nav a {
-        color: #ffffff;
-        text-decoration: none;
-        margin: 0 1.5rem;
-        font-size: 1.1rem;
-        transition: color 0.3s;
-        position: relative;
-        display: inline-block;
-        padding-bottom: 0.5rem;
-    }
-
-    nav a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #00adb5;
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-    }
-
-    nav a:hover {
-        color: #00adb5;
-    }
-
-    nav a:hover::after {
-        transform: scaleX(1);
-    }
-
-    .container {
-        max-width: 800px;
-        margin: 2rem auto;
-        padding: 0 1rem;
-        opacity: 0;
-        animation: fadeIn 1s forwards;
-    }
-
-    @keyframes fadeIn {
-        to {
-            opacity: 1;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskar Pandey - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
-    }
 
-    section {
-        margin-bottom: 3rem;
-        background-color: #1e1e1e;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            padding-top: 60px;
+        }
 
-    section h2 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        color: #00adb5;
-        position: relative;
-        padding-bottom: 1rem;
-    }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #252525;
+            padding: 1rem;
+            text-align: center;
+            z-index: 1000;
+        }
 
-    section h2::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50px;
-        height: 3px;
-        background-color: #00adb5;
-    }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            position: relative;
+        }
 
-    section p {
-        font-size: 1.1rem;
-        color: #cccccc;
-    }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #00adb5;
+            transition: width 0.3s;
+        }
 
-    .skills-list {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
+        nav a:hover::after {
+            width: 100%;
+        }
 
-    .skills-list li {
-        background-color: #252525;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        font-size: 1rem;
-        transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
-    }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
 
-    .skills-list li:hover {
-        transform: scale(1.05);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        background-color: #00adb5;
-    }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00adb5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
 
-    footer {
-        background-color: #1e1e1e;
-        text-align: center;
-        padding: 1rem;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
-    }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+        }
 
-    footer p {
-        font-size: 0.9rem;
-        color: #bbbbbb;
-    }
-</style>
+        .hero p {
+            font-size: 1.2rem;
+            color: #bbbbbb;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            padding-bottom: 4rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00adb5;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-card {
+            background-color: #252525;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #00adb5;
+        }
+
+        .skill-card p {
+            font-size: 1rem;
+            color: #ffffff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #252525;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .project-card h3 {
+            margin: 1rem 0;
+            color: #00adb5;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #00adb5;
+            text-decoration: none;
+        }
+
+        .project-card a:hover {
+            color: #ffffff;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            margin: 0 1rem;
+            color: #00adb5;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #252525;
+            color: #ffffff;
+        }
+
+        .contact-form button {
+            padding: 0.5rem 1rem;
+            background-color: #00adb5;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #008c95;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #bbbbbb;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="hero">
+        <img src="https://via.placeholder.com/150" alt="Sanskar Pandey" class="profile-pic">
+        <h1>Sanskar Pandey</h1>
+        <p>Software Developer | Technology Enthusiast</p>
+    </div>
+
+    <div class="container">
+        <section id="about" data-aos="fade-up">
+            <h2>About Me</h2>
+            <p>Hello, I'm Sanskar Pandey, a passionate software developer with a keen interest in creating innovative solutions. I graduated with a degree in Computer Science from XYZ University, where I developed a strong foundation in programming and software development.</p>
+            <p>During my time at ABC Company, I worked on various projects, including developing web applications and optimizing database performance. I specialize in full-stack development, with expertise in Python, JavaScript, and SQL.</p>
+            <p>In my free time, I enjoy hiking, reading science fiction, and exploring new technologies. I'm always eager to learn and take on new challenges.</p>
+        </section>
+
+        <section id="skills" data-aos="fade-up" data-aos-delay="100">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fab fa-python"></i><p>Python</p></div>
+                <div class="skill-card"><i class="fab fa-js"></i><p>JavaScript</p></div>
+                <div class="skill-card"><i class="fab fa-html5"></i><p>HTML & CSS</p></div>
+                <div class="skill-card"><i class="fab fa-react"></i><p>React</p></div>
+                <div class="skill-card"><i class="fab fa-node"></i><p>Node.js</p></div>
+                <div class="skill-card"><i class="fas fa-database"></i><p>SQL</p></div>
+            </div>
+        </section>
+
+        <section id="portfolio" data-aos="fade-up" data-aos-delay="200">
+            <h2>Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/250x150" alt="Weather App">
+                    <h3>Weather App</h3>
+                    <p>A web application that provides real-time weather information using APIs.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/250x150" alt="E-commerce Website">
+                    <h3>E-commerce Website</h3>
+                    <p>A fully functional online store with user authentication and payment integration.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/250x150" alt="Blog Platform">
+                    <h3>Blog Platform</h3>
+                    <p>A content management system for bloggers with features like post creation and commenting.</p>
+                    <a href="#">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" data-aos="fade-up" data-aos-delay="300">
+            <h2>Contact</h2>
+            <p>Feel free to reach out to me for collaboration or inquiries. You can contact me via email at <a href="mailto:sanskar@example.com">sanskar@example.com</a> or connect with me on social media.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Sanskar Pandey. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
