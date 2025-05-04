@@ -3,345 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanskar Pandey - Personal Website</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Sanskar Pandey - Entrepreneur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
         }
 
         body {
-            background-color: #121212;
-            color: #ffffff;
-            line-height: 1.6;
+            font-family: 'Open Sans', sans-serif;
+            background: #000;
+            color: #fff;
             overflow-x: hidden;
         }
 
-        header {
-            background-color: #1e1e1e;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-        }
-
-        header.fade-in {
-            animation: fadeIn 1s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.5rem;
-            color: #bbbbbb;
-        }
-
+        /* Navigation */
         nav {
-            background-color: #252525;
-            padding: 1rem;
-            text-align: center;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
         }
 
         nav a {
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1.1rem;
-            transition: color 0.3s, transform 0.3s;
+            margin: 0 20px;
+            font-size: 1.2em;
+            transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #00adb5;
-            transform: scale(1.1);
+            color: #fdbb2d;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            margin-bottom: 4rem;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #00adb5;
-            position: relative;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: #00adb5;
-            transition: width 0.5s;
-        }
-
-        section.visible h2::after {
-            width: 100px;
-        }
-
-        section p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            line-height: 1.8;
-        }
-
-        .skills-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skills-list li {
-            background-color: #252525;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-
-        #skills.visible .skills-list li {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #skills.visible .skills-list li:nth-child(1) { transition-delay: 0s; }
-        #skills.visible .skills-list li:nth-child(2) { transition-delay: 0.1s; }
-        #skills.visible .skills-list li:nth-child(3) { transition-delay: 0.2s; }
-        #skills.visible .skills-list li:nth-child(4) { transition-delay: 0.3s; }
-        #skills.visible .skills-list li:nth-child(5) { transition-delay: 0.4s; }
-        #skills.visible .skills-list li:nth-child(6) { transition-delay: 0.5s; }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        footer {
-            background-color: #1e1e1e;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            transition: transform 0.5s;
-        }
-
-        footer:hover {
-            transform: translateY(-5px);
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #bbbbbb;
-        }
-
-        .intro-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #121212;
-            z-index: 1000;
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .welcome-text {
-            font-size: 4rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px #00adb5;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .welcome-text.fade-out {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            animation: none;
-        }
-
-        .slit {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
-            width: 50%;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background-color: #121212;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            transition: transform 1s ease-in-out;
+            background: url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: 0;
         }
 
-        .left { left: 0; }
-        .right { right: 0; }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
 
-        .slit.left.open { transform: translateX(-100%); }
-        .slit.right.open { transform: translateX(100%); }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5em;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-in-out;
+        }
 
-        a { color: #00adb5; transition: color 0.3s; }
-        a:hover { color: #ffffff; }
+        .hero-content p {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
 
-        @media (max-width: 600px) {
-            nav {
-                flex-direction: column;
-                align-items: center;
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #fdbb2d;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #000, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 40px;
+            color: #fdbb2d;
+        }
+
+        section p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            background: #fdbb2d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #b21f1f;
+        }
+
+        .social-links a {
+            margin: 10px;
+            color: #fff;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #fdbb2d;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3em;
+            }
+
+            .hero-content p {
+                font-size: 1.2em;
+            }
+
             nav a {
-                margin: 0.5rem 0;
+                font-size: 1em;
+                margin: 0 10px;
             }
-            header h1 { font-size: 2rem; }
-            header p { font-size: 1rem; }
-            section h2 { font-size: 2rem; }
-            .welcome-text { font-size: 2.5rem; }
+
+            section h2 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="intro-overlay">
-        <div class="welcome-text">Welcome</div>
-        <div class="slit left"></div>
-        <div class="slit right"></div>
-    </div>
-    <header>
-        <h1>Sanskar Pandey</h1>
-        <p>Software Developer | Technology Enthusiast</p>
-    </header>
-
+    <!-- Navigation -->
     <nav>
+        <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
     </nav>
 
-    <div class="container">
-        <section id="about" class="animate-on-scroll">
-            <h2>About Me</h2>
-            <p>
-                Hello, I'm Sanskar Pandey, a passionate software developer with a keen interest in creating innovative solutions. 
-                With a strong foundation in computer science, I enjoy tackling complex problems and building user-friendly applications.
-                My goal is to contribute to cutting-edge technology projects while continuously enhancing my skills.
-            </p>
-        </section>
+    <!-- Home Page -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sanskar Pandey</h1>
+            <p>Entrepreneur | Robotics Innovator</p>
+            <a href="#about" class="btn">About Me</a>
+            <a href="#projects" class="btn">Projects</a>
+        </div>
+    </section>
 
-        <section id="skills" class="animate-on-scroll">
-            <h2>Skills</h2>
-            <ul class="skills-list">
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>HTML & CSS</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>SQL</li>
-            </ul>
-        </section>
+    <!-- About Page -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p class="scroll-reveal">I’m Sanskar Pandey, an entrepreneur with a passion for building innovative solutions. Currently, I’m immersed in the robotics space, focusing on creating systems that merge robotics and AI to drive futuristic technology.</p>
+        <p class="scroll-reveal">My journey began with a curiosity for how things work, leading me to explore engineering and entrepreneurship. Over the years, I’ve worked on projects that push the boundaries of what’s possible, blending creativity with cutting-edge technology.</p>
+    </section>
 
-        <section id="contact" class="animate-on-scroll">
-            <h2>Contact</h2>
-            <p>
-                Feel free to reach out to me for collaboration or inquiries. 
-                You can contact me via email at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2053414e534b41520e50414e444559604558414d504c450e434f4d">[email&#160;protected]</a> or connect with me on LinkedIn.
-            </p>
-        </section>
-    </div>
+    <!-- Projects Page -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-card scroll-reveal">
+            <h3>WorkBid</h3>
+            <p>WorkBid is a platform designed to open portals for short-term work. It connects contractors and seekers, facilitating work confirmation through a seamless, AI-driven interface. Features include real-time bidding, secure payments, and smart matching algorithms.</p>
+        </div>
+        <div class="project-card scroll-reveal">
+            <h3>RoboAssist</h3>
+            <p>An invented project: RoboAssist is an AI-powered robotic assistant designed to automate repetitive tasks in industrial settings, enhancing efficiency and precision.</p>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Sanskar Pandey. All rights reserved.</p>
-    </footer>
+    <!-- Blog Page -->
+    <section id="blog">
+        <h2>Blog</h2>
+        <p class="scroll-reveal">Stay tuned for insights on robotics, AI, and entrepreneurship. I’ll be sharing updates on my projects and thoughts on the future of technology.</p>
+    </section>
 
-    <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-    </script>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <!-- Contact Page -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-form scroll-reveal">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </div>
+        <div class="social-links scroll-reveal">
+            <a href="https://www.instagram.com/pnd_sanskar" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank">LinkedIn</a>
+            <p>Email: <a href="mailto:sanskarpandey.work@gmail.com">sanskarpandey.work@gmail.com</a></p>
+        </div>
+    </section>
+
     <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.querySelector('.welcome-text').classList.add('fade-out');
-                setTimeout(function() {
-                    document.querySelector('.slit.left').classList.add('open');
-                    document.querySelector('.slit.right').classList.add('open');
-                    setTimeout(function() {
-                        document.querySelector('.intro-overlay').style.display = 'none';
-                        document.querySelector('header').classList.add('fade-in');
-                    }, 1000);
-                }, 500);
-            }, 1000);
+        // Smooth Scroll and Transitions
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
         });
 
-        const sections = document.querySelectorAll('.animate-on-scroll');
-        const observer = new IntersectionObserver(entries => {
+        // Scroll Reveal Animation
+        const scrollReveals = document.querySelectorAll('.scroll-reveal');
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
                 }
             });
         }, { threshold: 0.1 });
-        sections.forEach(section => observer.observe(section));
+
+        scrollReveals.forEach(element => observer.observe(element));
     </script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a6e6b9cb7eadb0',t:'MTc0NjM1MDIwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
