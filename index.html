@@ -3,625 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanskar Pandey | Technology Innovator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Merriweather&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <title>Sanskar Pandey - Entrepreneur</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {
-            --primary: #FFFFFF;
-            --secondary: #F5F5F5;
-            --accent: #003366;
-            --accent-secondary: #29A19C;
-            --text: #222222;
-            --text-secondary: #555555;
-            --gold: #FFD700;
-            --white: #FFFFFF;
-            --blue: #003366;
-            --teal: #29A19C;
+            --muted-red: #e57373;
+            --muted-blue: #64b5f6;
+            --muted-orange: #ffb74d;
         }
-
-        * {
+        body {
+            background: linear-gradient(270deg, var(--muted-red), var(--muted-blue), var(--muted-orange));
+            background-size: 600% 600%;
+            animation: backgroundAnimation 30s ease infinite;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Merriweather', serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-            color: var(--text);
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-        }
-
-        .glass-pane {
-            background: linear-gradient(135deg, rgba(0, 51, 102, 0.1), rgba(41, 161, 156, 0.1));
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-        }
-
-        .logo svg {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        #background-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        #cursor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--accent);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease, background 0.1s ease;
-        }
-
-        #cursor.hover {
-            transform: scale(1.5) translate(-33%, -33%);
-            background: var(--accent-secondary);
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 700;
-            transition: transform 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-        }
-
-        section {
-            padding: 5rem 2rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .about-image img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        .about-text p {
-            font-size: 1rem;
             line-height: 1.6;
-            color: var(--text-secondary);
         }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
-        .project-card {
-            background: var(--secondary);
-            padding: 1.5rem;
+        header {
+            background-color: #1f1f1f;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: var(--muted-orange);
+            transform: scale(1.1);
+        }
+        section {
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        section:hover {
+            box-shadow: 0 0 20px var(--muted-blue);
+            transform: translateY(-5px);
         }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+        section.active {
+            box-shadow: 0 0 30px var(--muted-red);
+            transform: scale(1.02);
+            transition: all 0.3s ease;
         }
-
-        .project-card p {
-            font-size: 1rem;
-            color: var(--text-secondary);
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-top: 0;
         }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+        h2, h3 {
+            font-weight: 400;
+            color: #ffffff;
         }
-
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        ul {
+            padding-left: 20px;
         }
-
-        .form-group input, .form-group textarea {
-            padding: 1rem;
-            border: 1px solid var(--text-secondary);
-            border-radius: 5px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .submit-btn {
-            padding: 1rem 2rem;
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        ul li {
             transition: transform 0.3s ease;
         }
-
-        .submit-btn:hover {
+        ul li:hover {
+            transform: translateX(10px);
+        }
+        ul li i {
+            margin-right: 10px;
+        }
+        footer {
+            background-color: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+        }
+        .social-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 20px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--muted-orange);
+            transform: scale(1.2) rotate(10deg);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background 0.3s ease, border 0.3s ease;
+        }
+        input:hover, textarea:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border: 2px solid var(--muted-blue);
+            box-shadow: 0 0 10px var(--muted-blue);
+        }
+        textarea {
+            height: 150px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: var(--muted-orange);
+            color: #121212;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background: #ffd633;
             transform: scale(1.05);
         }
-
-        footer {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--muted-orange);
+            padding: 10px;
+            border-radius: 50%;
+            display: none;
+            z-index: 100;
         }
-
         @media (max-width: 768px) {
-            .about-grid, .contact-grid {
-                grid-template-columns: 1fr;
+            body {
+                animation: none;
+                font-size: 18px;
             }
-            .hero-title {
-                font-size: 3rem;
+            h1 {
+                font-size: 2em;
             }
-            .hero-subtitle {
-                font-size: 1.2rem;
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            section {
+                padding: 20px;
+                margin: 10px;
+            }
+            .social-links a {
+                font-size: 20px;
+            }
+            button {
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div id="background-shapes"></div>
-    <div id="cursor"></div>
-    <nav>
-        <div class="container">
-            <a href="#home" class="logo">
-                Sanskar Pandey
-                <svg width="20" height="20" viewBox="0 0 20 20" style="margin-left: 10px;">
-                    <circle cx="10" cy="10" r="8" fill="var(--accent)" />
-                </svg>
-            </a>
+    <header>
+        <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#connect">Connect With Me</a></li>
             </ul>
-        </div>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="hero-content glass-pane">
-            <h1 class="hero-title">Sanskar Pandey</h1>
-            <p class="hero-subtitle">Pioneer in AI & Robotics</p>
-            <a href="#about" class="btn">Discover My Journey</a>
-        </div>
-    </section>
-
-    <section id="about" class="glass-pane">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-grid">
-            <div class="about-image">
-                <img src="https://images.pexels.com/photos/1245055/pexels-photo-1245055.jpeg" alt="Sanskar Pandey">
-            </div>
-            <div class="about-text">
-                <p>Currently pursuing a degree in Electronics at the University of Delhi, I am passionate about leveraging technology to solve real-world problems. My journey began at DPS Varanasi, where I first discovered my love for robotics and AI. From building my first robot at 12 to winning science fairs with AI projects, I have always been driven by curiosity and innovation.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="glass-pane">
-        <h2 class="section-title">My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card glass-pane">
-                <h3>WorkBid</h3>
-                <p>WorkBid leverages advanced AI to streamline short-term work contracts, connecting contractors and clients through a transparent, algorithm-driven bidding system that ensures fairness and efficiency.</p>
-            </div>
-            <div class="project-card glass-pane">
-                <h3>AI-Powered Robotics</h3>
-                <p>This project develops autonomous robots with cutting-edge AI, capable of performing complex tasks in industrial automation, smart homes, and urban environments with unparalleled precision.</p>
-            </div>
-            <div class="project-card glass-pane">
-                <h3>Neural Interface</h3>
-                <p>This initiative explores brain-computer interfaces, enabling intuitive control of robotic systems through thought, revolutionizing human-machine collaboration.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="glass-pane">
-        <h2 class="section-title">Connect With Me</h2>
-        <div class="contact-grid">
-            <div class="contact-info">
-                <p>Email: <a href="/cdn-cgi/l/email-protection#5320323d2038322113362b323e233f367d303c3e"><span class="__cf_email__" data-cfemail="780b19160b13190a381d00191508141d561b1715">[email&#160;protected]</span></a></p>
-                <p>Instagram: <a href="https://www.instagram.com/pnd_sanskar" target="_blank">@pnd_sanskar</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank">Sanskar Pandey</a></p>
-            </div>
-            <div class="form">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="Your name">
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder="Your email">
-                </div>
-                <div class="form-group">
-                    <textarea id="message" placeholder="Your message"></textarea>
-                </div>
-                <button class="submit-btn" onclick="handleFormSubmit()">Send Message</button>
-            </div>
-        </div>
-    </section>
-
+        </nav>
+    </header>
+    <main>
+        <section id="about" data-aos="fade-up">
+            <h1 data-aos="fade-down">About Sanskar Pandey</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Sanskar Pandey is an aspiring entrepreneur with a passion for innovation and technology. Currently pursuing a Bachelor's in Science Honors from Delhi University, Sanskar combines his academic background with a keen interest in solving real-world problems through technology.</p>
+            <h2 data-aos="fade-right" data-aos-delay="200">Background</h2>
+            <p data-aos="fade-up" data-aos-delay="300">Sanskar completed his schooling at Delhi Public School, where he developed a strong foundation in science and technology. His curiosity and drive to create impactful solutions led him to explore the world of startups and entrepreneurship.</p>
+            <h2 data-aos="fade-right" data-aos-delay="400">Vision</h2>
+            <p data-aos="fade-up" data-aos-delay="500">With his first venture, WorkBid, Sanskar aims to revolutionize the way short-term job contracts are accessed and managed. WorkBid is a platform designed to make hiring for short-term projects—from school assignments to professional tasks—seamless and efficient. By connecting clients with skilled professionals, WorkBid eliminates the hassle of traditional hiring processes, making it easier for both parties to collaborate and achieve their goals.</p>
+            <p data-aos="fade-up" data-aos-delay="600">Sanskar believes in the power of technology to simplify lives and is committed to building solutions that are not only innovative but also user-friendly and accessible.</p>
+        </section>
+        <section id="projects" data-aos="fade-up">
+            <h1 data-aos="zoom-in">Projects</h1>
+            <h2 data-aos="zoom-in" data-aos-delay="100">WorkBid: Redefining Short-Term Employment</h2>
+            <p data-aos="fade-up" data-aos-delay="200">WorkBid is a groundbreaking platform that simplifies the process of hiring for short-term projects. Whether you need help with a school project or require a professional for a specific task, WorkBid connects you with the right talent quickly and efficiently.</p>
+            <h3 data-aos="fade-right" data-aos-delay="300">How It Works</h3>
+            <ul>
+                <li data-aos="fade-right" data-aos-delay="400"><i class="fas fa-clipboard"></i> <strong>Post a Job:</strong> Describe your project and set your budget.</li>
+                <li data-aos="fade-left" data-aos-delay="500"><i class="fas fa-hand-holding-usd"></i> <strong>Receive Bids:</strong> Skilled professionals bid on your project.</li>
+                <li data-aos="fade-right" data-aos-delay="600"><i class="fas fa-trophy"></i> <strong>Choose the Best:</strong> Select the bid that fits your needs.</li>
+                <li data-aos="fade-left" data-aos-delay="700"><i class="fas fa-check-circle"></i> <strong>Get It Done:</strong> Collaborate and complete the project seamlessly.</li>
+            </ul>
+            <h3 data-aos="fade-right" data-aos-delay="800">Benefits</h3>
+            <ul>
+                <li data-aos="fade-right" data-aos-delay="900"><i class="fas fa-universal-access"></i> <strong>Accessibility:</strong> Easy access to a pool of talented individuals.</li>
+                <li data-aos="fade-left" data-aos-delay="1000"><i class="fas fa-bolt"></i> <strong>Efficiency:</strong> Streamlined process saves time and effort.</li>
+                <li data-aos="fade-right" data-aos-delay="1100"><i class="fas fa-exchange-alt"></i> <strong>Flexibility:</strong> Suitable for a wide range of projects and budgets.</li>
+            </ul>
+            <h3 data-aos="fade-right" data-aos-delay="1200">Future Plans</h3>
+            <p data-aos="fade-up" data-aos-delay="1300">Sanskar is continuously working on enhancing WorkBid with new features, such as advanced matching algorithms, secure payment gateways, and a rating system to ensure quality and trust.</p>
+            <p data-aos="fade-up" data-aos-delay="1400">Stay tuned for more exciting updates as WorkBid grows and evolves.</p>
+        </section>
+        <section id="connect" data-aos="fade-up">
+            <h1 data-aos="fade-down">Connect With Me</h1>
+            <p data-aos="fade-up" data-aos-delay="100">I'm always open to new ideas, collaborations, and conversations. Feel free to reach out through any of the following channels:</p>
+            <ul class="social-links" data-aos="fade-up" data-aos-delay="200">
+                <li><a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://www.instagram.com/pnd_sanskar" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="/cdn-cgi/l/email-protection#d5a6b4bba6beb4a7a5b4bbb1b0acfba2baa7be95b2b8b4bcb9fbb6bab8"><i class="fas fa-envelope"></i></a></li>
+            </ul>
+            <p data-aos="fade-up" data-aos-delay="300">Alternatively, you can use the contact form below to send me a direct message.</p>
+            <form action="#" method="post" data-aos="fade-up" data-aos-delay="400">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required data-aos="fade-right" data-aos-delay="500">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required data-aos="fade-right" data-aos-delay="600">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Your Message" required data-aos="fade-right" data-aos-delay="700"></textarea>
+                <button type="submit" data-aos="zoom-in" data-aos-delay="800">Send Message</button>
+            </form>
+        </section>
+    </main>
     <footer>
-        <p>© 2025 Sanskar Pandey. All rights reserved.</p>
+        <p>© 2023 Sanskar Pandey. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/pnd_sanskar" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="/cdn-cgi/l/email-protection#7506141b061e140705141b11100c5b021a071e351218141c195b161a18"><i class="fas fa-envelope"></i></a>
+        </div>
     </footer>
-
+    <a href="#" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex));
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.from('.hero-title', { opacity: 0, y: -50, duration: 1, ease: 'power2.out' });
-        gsap.from('.hero-subtitle', { opacity: 0, y: 50, duration: 1, delay: 0.5, ease: 'power2.out' });
-
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                document.getElementById('cursor').classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                document.getElementById('cursor').classList.remove('hover');
-            });
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
         });
-
-        gsap.from('.about-image', {
-            scrollTrigger: { trigger: '#about', start: "top 80%" },
-            x: -100,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out"
-        });
-        gsap.from('.about-text', {
-            scrollTrigger: { trigger: '#about', start: "top 80%" },
-            x: 100,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out"
-        });
-        gsap.from('.project-card', {
-            scrollTrigger: { trigger: '#projects', start: "top 80%" },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power2.out"
-        });
-        gsap.from('.contact-info', {
-            scrollTrigger: { trigger: '#contact', start: "top 80%" },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out"
-        });
-        gsap.from('.form', {
-            scrollTrigger: { trigger: '#contact', start: "top 80%" },
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            delay: 0.5,
-            ease: "power2.out"
-        });
-
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#ffffff' },
-                shape: { type: 'circle', stroke: { width: 0, color: '#000000' }, polygon: { nb_sides: 5 } },
-                opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
-                size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
-                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
-            },
-            retina_detect: true
-        });
-
-        const shapes = [];
-        function createShape() {
-            const shapeTypes = [createCircle, createSquare, createTriangle];
-            const randomType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
-            const shape = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            shape.setAttribute("width", "100");
-            shape.setAttribute("height", "100");
-            shape.style.position = "absolute";
-            shape.style.left = Math.random() * 100 + "%";
-            shape.style.top = Math.random() * 100 + "%";
-            shape.style.opacity = 0.3;
-            const shapeElement = randomType();
-            shape.appendChild(shapeElement);
-            document.getElementById("background-shapes").appendChild(shape);
-            gsap.to(shape, {
-                x: () => Math.random() * 200 - 100,
-                y: () => Math.random() * 200 - 100,
-                rotation: () => Math.random() * 360,
-                duration: 10 + Math.random() * 10,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            });
-            shapes.push(shape);
-        }
-
-        function createCircle() {
-            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttribute("cx", "50");
-            circle.setAttribute("cy", "50");
-            circle.setAttribute("r", "40");
-            circle.setAttribute("stroke-width", "5");
-            circle.setAttribute("fill", "none");
-            const colorVars = ['white', 'blue', 'teal'];
-            circle.style.stroke = `var(--${colorVars[Math.floor(Math.random() * colorVars.length)]})`;
-            return circle;
-        }
-
-        function createSquare() {
-            const square = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-            square.setAttribute("x", "10");
-            square.setAttribute("y", "10");
-            square.setAttribute("width", "80");
-            square.setAttribute("height", "80");
-            square.setAttribute("stroke-width", "5");
-            square.setAttribute("fill", "none");
-            const colorVars = ['white', 'blue', 'teal'];
-            square.style.stroke = `var(--${colorVars[Math.floor(Math.random() * colorVars.length)]})`;
-            return square;
-        }
-
-        function createTriangle() {
-            const triangle = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-            triangle.setAttribute("points", "50,10 90,90 10,90");
-            triangle.setAttribute("stroke-width", "5");
-            triangle.setAttribute("fill", "none");
-            const colorVars = ['white', 'blue', 'teal'];
-            triangle.style.stroke = `var(--${colorVars[Math.floor(Math.random() * colorVars.length)]})`;
-            return triangle;
-        }
-
-        for (let i = 0; i < 20; i++) {
-            createShape();
-        }
-
-        document.addEventListener('mousemove', (e) => {
-            const cursor = document.getElementById('cursor');
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            shapes.forEach(shape => {
-                const rect = shape.getBoundingClientRect();
-                const shapeX = rect.left + rect.width / 2;
-                const shapeY = rect.top + rect.height / 2;
-                const dx = shapeX - mouseX;
-                const dy = shapeY - mouseY;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 150) {
-                    const angle = Math.atan2(dy, dx);
-                    const force = (150 - distance) / 150 * 50;
-                    gsap.to(shape, {
-                        x: Math.cos(angle) * force,
-                        y: Math.sin(angle) * force,
-                        duration: 0.3,
-                        ease: "power2.out",
-                        overwrite: "auto"
-                    });
-                } else {
-                    gsap.to(shape, {
-                        x: 0,
-                        y: 0,
-                        duration: 0.3,
-                        ease: "power2.out",
-                        overwrite: "auto"
-                    });
-                }
-            });
-        });
-
-        function handleFormSubmit() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            if (name && email && message) {
-                alert('Your message has been received. I will respond promptly.');
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-            } else {
-                alert('Please fill in all required fields.');
-            }
-        }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a8717c2849071d',t:'MTc0NjM2NjM3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93a87e914d9bb030',t:'MTc0NjM2NjkxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // Section visibility effect
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
 </html>
