@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sanskar Pandey is an aspiring entrepreneur with a passion for innovation and technology. Learn about his project WorkBid.">
     <title>Sanskar Pandey - Entrepreneur</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -12,6 +13,9 @@
             --muted-red: #e57373;
             --muted-blue: #64b5f6;
             --muted-orange: #ffb74d;
+        }
+        html {
+            font-size: 16px;
         }
         body {
             background: linear-gradient(270deg, var(--muted-red), var(--muted-blue), var(--muted-orange));
@@ -59,7 +63,7 @@
             padding: 40px;
             margin: 20px auto;
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
@@ -74,16 +78,22 @@
             transform: scale(1.02);
             transition: all 0.3s ease;
         }
-        h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #ffffff;
-            margin-top: 0;
-        }
-        h2, h3 {
+        h1, h2, h3 {
             font-weight: 400;
             color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        h1 {
+            font-size: 2.5rem;
+        }
+        h2 {
+            font-size: 2rem;
+        }
+        h3 {
+            font-size: 1.5rem;
+        }
+        p, li {
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         ul {
             padding-left: 20px;
@@ -168,12 +178,12 @@
             z-index: 100;
         }
         @media (max-width: 768px) {
-            body {
-                animation: none;
+            html {
                 font-size: 18px;
             }
-            h1 {
-                font-size: 2em;
+            body {
+                animation: none;
+                background: linear-gradient(270deg, var(--muted-red), var(--muted-blue));
             }
             nav ul {
                 display: flex;
@@ -183,9 +193,13 @@
             nav ul li {
                 margin: 10px 0;
             }
+            nav ul li a {
+                padding: 10px 20px;
+            }
             section {
                 padding: 20px;
                 margin: 10px;
+                max-width: 95%;
             }
             .social-links a {
                 font-size: 20px;
@@ -241,9 +255,9 @@
             <h1 data-aos="fade-down">Connect With Me</h1>
             <p data-aos="fade-up" data-aos-delay="100">I'm always open to new ideas, collaborations, and conversations. Feel free to reach out through any of the following channels:</p>
             <ul class="social-links" data-aos="fade-up" data-aos-delay="200">
-                <li><a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="https://www.instagram.com/pnd_sanskar" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="/cdn-cgi/l/email-protection#d5a6b4bba6beb4a7a5b4bbb1b0acfba2baa7be95b2b8b4bcb9fbb6bab8"><i class="fas fa-envelope"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="https://www.instagram.com/pnd_sanskar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="/cdn-cgi/l/email-protection#d5a6b4bba6beb4a7a5b4bbb1b0acfba2baa7be95b2b8b4bcb9fbb6bab8" title="Email"><i class="fas fa-envelope"></i></a></li>
             </ul>
             <p data-aos="fade-up" data-aos-delay="300">Alternatively, you can use the contact form below to send me a direct message.</p>
             <form action="#" method="post" data-aos="fade-up" data-aos-delay="400">
@@ -260,56 +274,71 @@
     <footer>
         <p>© 2023 Sanskar Pandey. All rights reserved.</p>
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/pnd_sanskar" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="/cdn-cgi/l/email-protection#7506141b061e140705141b11100c5b021a071e351218141c195b161a18"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/sanskar-pandey-80a6b5326/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/pnd_sanskar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="/cdn-cgi/l/email-protection#3506141b061e140705141b11100c5b021a071e351218141c195b161a18" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
     </footer>
-    <a href="#" id="back-to-top"><i class="fas fa-arrow-up"></i></a>
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+    
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
     <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-    </script>
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS (Animate On Scroll)
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true 
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
-        });
-        // Back to top button
-        const backToTop = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.style.display = 'block';
-            } else {
-                backToTop.style.display = 'none';
+
+            // Back-to-top button functionality
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTop.style.display = 'block';
+                    } else {
+                        backToTop.style.display = 'none';
+                    }
+                });
+                backToTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
-        });
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        // Section visibility effect
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                } else {
-                    entry.target.classList.remove('active');
-                }
-            });
-        }, { threshold: 0.5 });
-        sections.forEach(section => {
-            observer.observe(section);
+
+            // IntersectionObserver for section active state
+            const sections = document.querySelectorAll('section');
+            if (sections.length > 0) {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                        } else {
+                            entry.target.classList.remove('active');
+                        }
+                    });
+                }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+            }
         });
     </script>
 </body>
